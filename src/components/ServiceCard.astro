@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  href?: string;
+  large?: boolean;
+}
+
+const { title, description, icon, href, large = false } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag href={href} class:list={["card-accent block bg-white rounded-2xl border border-sky-tint group hover:shadow-lg transition-all duration-300", large ? "p-8" : "p-6"]}>
+  <div class="w-11 h-11 rounded-xl bg-sky-tint flex items-center justify-center mb-5 group-hover:bg-brand-primary/15 transition-colors text-brand-primary">
+    <Fragment set:html={icon} />
+  </div>
+  <h3 class:list={["font-heading text-dark mb-3 group-hover:text-brand-primary transition-colors duration-200", large ? "text-xl" : "text-lg"]}>
+    {title}
+  </h3>
+  <p class:list={["text-dark-light/80 leading-relaxed", large ? "text-[15px]" : "text-sm"]}>
+    {description}
+  </p>
+  {href && (
+    <span class="inline-flex items-center gap-1.5 mt-4 text-sm font-bold text-brand-primary">
+      Learn more
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </span>
+  )}
+</Tag>

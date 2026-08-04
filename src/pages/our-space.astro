@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const gallery = [
+  { src: '/images/space-gym-2.jpg', alt: 'Sensory gym with climbing wall and soft play structures', wide: true },
+  { src: '/images/space-gym-3.jpg', alt: 'Climbing and swinging equipment in the sensory gym' },
+  { src: '/images/clinic-swing-therapy.jpg', alt: 'Therapist and child playing with stepping stones', wide: true },
+  { src: '/images/space-gym-5.jpg', alt: 'Sensory gym detail with therapy equipment' },
+  { src: '/images/clinic-therapy-7.jpg', alt: 'Child during a one-on-one therapy session' },
+  { src: '/images/space-gym-4.jpg', alt: 'Open sensory gym floor with mats and equipment', wide: true },
+  { src: '/images/clinic-therapy-2.jpg', alt: 'Therapy activity close-up' },
+  { src: '/images/clinic-kid-activity.jpg', alt: 'Child balancing during occupational therapy' },
+];
+
+const features = [
+  { title: 'Climbing wall & monkey bars', text: 'Strength, motor planning, and confidence — several stories of fun in one corner.' },
+  { title: 'Swings & suspension gear', text: 'The heart of sensory integration work: vestibular input tuned to each child\'s needs.' },
+  { title: 'Crash pads & soft play', text: 'Safe places to jump, crash, and regulate — deep pressure input kids crave.' },
+  { title: 'Mirrored movement zones', text: 'Visual feedback that accelerates body awareness and motor learning.' },
+];
+---
+
+<BaseLayout title="Explore Our Space" description="Tour the TheraPlay LA sensory gym on La Brea Ave — climbing walls, swings, monkey bars, and soft play zones designed for therapeutic progress through play.">
+  <Hero
+    compact
+    eyebrow="explore our space"
+    title="A clinic disguised as a playground"
+    subtitle="Every swing, wall, and crash pad in our La Brea sensory gym was chosen for a therapeutic reason. Your child will just call it fun."
+    image="/images/space-gym-1.jpg"
+    primaryCta={{ label: 'Book a Visit', href: '/contact' }}
+  />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">designed with intention</p>
+        <h2 class="text-3xl md:text-4xl font-heading">Every corner has a purpose</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {features.map(f => (
+          <div class="card-accent bg-light-bg rounded-2xl p-7 fade-in-up">
+            <h3 class="font-heading text-lg text-dark mb-2">{f.title}</h3>
+            <p class="text-sm text-dark-light/80 leading-relaxed">{f.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 [grid-auto-flow:dense]">
+        {gallery.map(img => (
+          <div class:list={["overflow-hidden rounded-2xl group fade-in-up", img.wide && "sm:col-span-2"]}>
+            <img src={img.src} alt={img.alt} class="w-full h-72 object-cover group-hover:scale-[1.04] transition-transform duration-500" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-sky-tint">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="eyebrow-script mb-2">come see it in person</p>
+      <h2 class="text-2xl md:text-3xl font-heading mb-4">1070 S La Brea Ave, Los Angeles</h2>
+      <p class="text-dark-light/80 leading-relaxed max-w-2xl mx-auto">
+        We're located in the heart of Los Angeles, minutes from Mid-Wilshire and Hancock Park.
+        Tours are part of every discovery visit — most kids don't want to leave.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

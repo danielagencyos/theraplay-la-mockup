@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatBar from '../components/StatBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const services = [
+  {
+    title: 'Occupational Therapy',
+    description: 'Sensory processing, fine and gross motor skills, primitive reflex integration, and self-regulation — built through purposeful play.',
+    href: '/services/occupational-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>',
+  },
+  {
+    title: 'Speech Therapy',
+    description: 'Speech, language, and cognitive-communication support from licensed SLPs — with parent coaching woven into every session.',
+    href: '/services/speech-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>',
+  },
+  {
+    title: 'Feeding & Swallowing',
+    description: 'From picky eating to swallowing challenges — we uncover the "why" behind mealtime struggles and make eating joyful again.',
+    href: '/services/feeding-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  },
+  {
+    title: 'Myofunctional Therapy',
+    description: 'Airway-focused care for mouth breathing, tongue posture, and oral habits that quietly impact sleep, feeding, and focus.',
+    href: '/services/myofunctional-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  },
+  {
+    title: 'Therapy Intensives',
+    description: 'A focused 4-week program — 4-5 sessions a week targeting 3-4 high-impact goals for faster, lasting breakthroughs.',
+    href: '/services/intensives',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+  },
+  {
+    title: 'Sleep & Nutrition',
+    description: 'Sleep coaching and nutrition consulting that round out the whole-child picture — because rested, well-nourished kids thrive.',
+    href: '/services',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>',
+  },
+];
+
+const testimonials = [
+  {
+    quote: "We finally found a team that looked at the whole picture instead of just one symptom. Within months, mealtimes went from meltdowns to something we actually enjoy as a family.",
+    name: 'Jessica M.',
+    role: 'Parent of a 4-year-old',
+  },
+  {
+    quote: "The intensive program was a game-changer. Our son made more progress in three weeks than we'd seen in months of weekly sessions — and he begged to go back to 'the play gym' every morning.",
+    name: 'David R.',
+    role: 'Parent of a 6-year-old',
+  },
+  {
+    quote: "Dr. Marielly connected the dots between our daughter's mouth breathing, sleep, and sensory struggles. No one had ever explained it that clearly. We felt heard from the very first call.",
+    name: 'Priya S.',
+    role: 'Parent of a 5-year-old',
+  },
+];
+
+const steps = [
+  { n: '1', title: 'Discovery Call', text: 'A free 15-minute conversation about your child and your concerns.' },
+  { n: '2', title: 'Evaluation', text: 'A comprehensive, play-based assessment that looks for root causes.' },
+  { n: '3', title: 'Personalized Plan', text: 'Clear goals and a therapy plan tailored to your child and family.' },
+  { n: '4', title: 'Playful Therapy', text: 'Engaging sessions in our sensory gym, at home, or via teletherapy.' },
+  { n: '5', title: 'Progress & Coaching', text: 'Parent coaching and measurable milestones every step of the way.' },
+];
+---
+
+<BaseLayout title="Pediatric Occupational, Speech & Feeding Therapy in Los Angeles">
+  <Hero
+    eyebrow="welcome to TheraPlay LA"
+    title="Helping LA kids play, speak, eat & thrive"
+    subtitle="A doctor-led pediatric therapy clinic that looks beyond symptoms to the root causes shaping your child's development — through occupational, speech, feeding, and airway-focused myofunctional therapy."
+    image="/images/clinic-swing-therapy.jpg"
+    badges={['Doctor-led, whole-child care', 'In-clinic & teletherapy', 'Regional Center vendor']}
+    primaryCta={{ label: 'Book a Free Discovery Call', href: '/contact' }}
+    secondaryCta={{ label: 'Explore Our Services', href: '/services' }}
+  />
+
+  <StatBar />
+
+  <!-- Services -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">how we help</p>
+        <h2 class="text-3xl md:text-4xl font-heading">One team for every piece of the puzzle</h2>
+        <p class="mt-4 text-dark-light/80 leading-relaxed">
+          Development doesn't happen in silos — and neither does our care. Our therapists collaborate
+          across disciplines so nothing about your child gets missed.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map(s => (
+          <div class="fade-in-up">
+            <ServiceCard title={s.title} description={s.description} icon={s.icon} href={s.href} large />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Therastacking -->
+  <section class="py-20 bg-light-bg overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div class="relative fade-in-up">
+          <div class="absolute -top-6 -left-6 w-40 h-40 bg-brand-primary-light/20 blob-soft"></div>
+          <img src="/images/clinic-kid-activity.jpg" alt="Child working on balance and coordination in the TheraPlay LA sensory gym" class="relative rounded-3xl shadow-xl w-full max-h-[560px] object-cover object-[center_70%]" loading="lazy" />
+          <div class="absolute -bottom-5 -right-4 sm:right-6 bg-white rounded-2xl shadow-lg px-5 py-4 border border-sky-tint">
+            <p class="eyebrow-script !text-xl">the Therastacking™ method</p>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow-script mb-2">why families choose us</p>
+          <h2 class="text-3xl md:text-4xl font-heading mb-5">We treat root causes, not just symptoms</h2>
+          <p class="text-dark-light/85 leading-relaxed mb-8">
+            Picky eating, speech delays, meltdowns, restless sleep — they're often connected. Dr. Marielly's
+            signature <strong>Therastacking</strong> approach layers occupational therapy, airway-focused care,
+            and orofacial myofunctional therapy to uncover and treat what's actually driving your child's challenges.
+          </p>
+          <div class="space-y-5">
+            {[
+              { title: 'Whole-child evaluation', text: 'We assess sensory processing, motor skills, airway health, feeding, and reflexes together — because they influence each other.' },
+              { title: 'Stacked, coordinated therapies', text: 'One integrated plan across disciplines instead of a patchwork of disconnected providers.' },
+              { title: 'Parents on the team', text: 'Coaching and home strategies in every plan, so progress continues long after each session ends.' },
+            ].map(item => (
+              <div class="flex gap-4 fade-in-up">
+                <div class="flex-shrink-0 w-9 h-9 rounded-full bg-brand-secondary/15 text-brand-secondary-dark flex items-center justify-center">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-dark text-base mb-1 font-body">{item.title}</h3>
+                  <p class="text-sm text-dark-light/80 leading-relaxed">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dr. Marielly -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-14 items-center">
+        <div class="lg:col-span-2 relative fade-in-up">
+          <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-brand-secondary/15 blob-soft"></div>
+          <img src="/images/team-dr-marielly.jpg" alt="Dr. Marielly Mitchell, founder of TheraPlay LA" class="relative rounded-3xl shadow-xl w-full max-h-[540px] object-cover object-top" loading="lazy" />
+        </div>
+        <div class="lg:col-span-3">
+          <p class="eyebrow-script mb-2">meet our founder</p>
+          <h2 class="text-3xl md:text-4xl font-heading mb-2">Dr. Marielly Mitchell</h2>
+          <p class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-5">OTD, OTR/L, SIPT, SWC · Doctor of Occupational Therapy</p>
+          <p class="text-dark-light/85 leading-relaxed mb-4">
+            With nearly 13 years of hands-on experience, Dr. Marielly built TheraPlay LA around a simple
+            conviction: children deserve care that's intentional, precise, and joyful. She is a pediatric
+            occupational therapist and orofacial myofunctional therapist whose integrative approach has been
+            featured on CBS News Los Angeles, Voyage LA, ShoutOut LA, and podcasts across the country.
+          </p>
+          <p class="text-dark-light/85 leading-relaxed mb-8">
+            What began as a solo OT practice has grown into a multidisciplinary team spanning occupational
+            therapy, speech-language pathology, feeding, sleep, and nutrition — all under one (very playful) roof.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/about" class="btn-lift inline-flex items-center justify-center px-7 py-3.5 bg-brand-primary hover:bg-brand-primary-dark text-white text-sm font-bold uppercase tracking-wider rounded-full">Our Story</a>
+            <a href="/team" class="btn-lift inline-flex items-center justify-center px-7 py-3.5 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white text-sm font-bold uppercase tracking-wider rounded-full">Meet the Whole Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our space teaser -->
+  <section class="relative overflow-hidden">
+    <img src="/images/space-gym-1.jpg" alt="The TheraPlay LA sensory gym with climbing wall and monkey bars" class="w-full h-[420px] md:h-[520px] object-cover" loading="lazy" />
+    <div class="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/30 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 pb-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-xl">
+          <p class="eyebrow-script mb-2" style="color: #F5A878;">a space kids never want to leave</p>
+          <h2 class="text-3xl md:text-4xl font-heading" style="color: #fff;">A sensory gym designed to feel like play</h2>
+          <p class="text-white/80 mt-3 leading-relaxed">Climbing walls, monkey bars, swings, and crash pads — every corner of our La Brea clinic is engineered for therapeutic progress disguised as fun.</p>
+        </div>
+        <a href="/our-space" class="btn-lift flex-shrink-0 inline-flex items-center px-7 py-3.5 bg-white text-dark hover:bg-brand-secondary text-sm font-bold uppercase tracking-wider rounded-full">
+          Explore Our Space
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-highlight-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">from our families</p>
+        <h2 class="text-3xl md:text-4xl font-heading">Parents notice the difference</h2>
+        <p class="mt-3 text-dark-light/70 text-sm">Illustrative testimonials for mockup purposes, inspired by the experiences families describe in public reviews.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map(t => (
+          <figure class="bg-white rounded-2xl p-8 shadow-sm border border-sky-tint fade-in-up">
+            <svg class="w-8 h-8 text-brand-secondary/40 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <blockquote class="text-dark-light/90 leading-relaxed text-[15px] mb-6">"{t.quote}"</blockquote>
+            <figcaption>
+              <div class="font-bold text-dark text-sm">{t.name}</div>
+              <div class="text-muted text-xs mt-0.5">{t.role}</div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <p class="eyebrow-script mb-2">getting started is easy</p>
+        <h2 class="text-3xl md:text-4xl font-heading">Your child's journey, step by step</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {steps.map((step, i) => (
+          <div class="relative text-center fade-in-up">
+            {i < steps.length - 1 && (
+              <div class="hidden lg:block absolute top-7 left-[calc(50%+2.25rem)] right-[calc(-50%+2.25rem)] border-t-2 border-dashed border-brand-primary-light/40"></div>
+            )}
+            <div class="w-14 h-14 mx-auto rounded-full bg-brand-primary text-white font-heading text-xl flex items-center justify-center shadow-md mb-4 relative z-10">{step.n}</div>
+            <h3 class="font-bold text-dark text-base mb-2 font-body">{step.title}</h3>
+            <p class="text-sm text-dark-light/75 leading-relaxed">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

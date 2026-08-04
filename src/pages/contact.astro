@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const steps = [
+  { n: '1', title: 'Reach out', text: 'Fill out the form or call us — takes two minutes.' },
+  { n: '2', title: 'Free discovery call', text: 'A relaxed 15-minute conversation about your child, your concerns, and your goals.' },
+  { n: '3', title: 'Clear next step', text: 'We\'ll recommend the right evaluation — or point you to a better-fit provider if that\'s what your child needs.' },
+];
+---
+
+<BaseLayout title="Contact Us — Book a Free Discovery Call" description="Book a free 15-minute discovery call with TheraPlay LA. Visit us at 1070 S La Brea Ave, Los Angeles, or call (424) 392-4568.">
+  <Hero
+    compact
+    eyebrow="let's talk"
+    title="Book your free discovery call"
+    subtitle="Fifteen minutes, zero pressure. Tell us what you're seeing — we'll tell you honestly what we think and what to do next."
+    image="/images/clinic-therapy-6.jpg"
+  />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-14">
+        <div class="lg:col-span-3">
+          <h2 class="text-2xl md:text-3xl font-heading mb-8">Tell us about your child</h2>
+          <ContactForm />
+        </div>
+
+        <div class="lg:col-span-2 space-y-8">
+          <div class="bg-light-bg rounded-3xl p-8">
+            <h3 class="font-heading text-xl text-dark mb-6">Visit or call us</h3>
+            <ul class="space-y-5 text-sm">
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                  <div class="font-bold text-dark">Clinic Address</div>
+                  <div class="text-dark-light/80 mt-0.5">1070 S La Brea Ave<br/>Los Angeles, CA 90019</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                </div>
+                <div>
+                  <div class="font-bold text-dark">Phone</div>
+                  <a href="tel:+14243924568" class="text-brand-primary hover:text-brand-primary-dark mt-0.5 inline-block font-semibold">(424) 392-4568</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <div class="font-bold text-dark">Email</div>
+                  <a href="mailto:hello@theraplayla.com" class="text-brand-primary hover:text-brand-primary-dark mt-0.5 inline-block font-semibold">hello@theraplayla.com</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <div class="font-bold text-dark">Hours</div>
+                  <div class="text-dark-light/80 mt-0.5">Monday - Friday: 8am - 6pm<br/>Weekend intensives by arrangement</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="rounded-3xl overflow-hidden border border-sky-tint">
+            <img src="/images/space-gym-4.jpg" alt="Inside the TheraPlay LA sensory gym" class="w-full h-56 object-cover" loading="lazy" />
+            <div class="bg-sky-tint px-6 py-4">
+              <p class="text-xs text-dark-light/70">Serving Los Angeles in-clinic · Serving families beyond LA via teletherapy · Regional Center vendor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-light-bg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="eyebrow-script mb-2">what happens next</p>
+        <h2 class="text-2xl md:text-3xl font-heading">Three easy steps</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {steps.map(step => (
+          <div class="bg-white rounded-2xl p-7 border border-sky-tint text-center fade-in-up">
+            <div class="w-12 h-12 mx-auto rounded-full bg-brand-primary text-white font-heading text-lg flex items-center justify-center mb-4">{step.n}</div>
+            <h3 class="font-bold text-dark mb-2 font-body">{step.title}</h3>
+            <p class="text-sm text-dark-light/75 leading-relaxed">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

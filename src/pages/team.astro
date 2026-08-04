@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const team = [
+  {
+    name: 'Dr. Marielly Mitchell',
+    credentials: 'OTD, OTR/L, SIPT, SWC',
+    role: 'Founder · Pediatric OT & Orofacial Myofunctional Therapist',
+    image: '/images/team-dr-marielly.jpg',
+    pos: 'object-top',
+    bio: 'Doctor of Occupational Therapy with nearly 13 years of hands-on experience. Creator of the Therastacking approach combining OT, airway-focused care, and myofunctional therapy. Featured on CBS News LA, Voyage LA, and podcasts nationwide.',
+  },
+  {
+    name: 'Marci Silver',
+    credentials: 'MS, CCC-SLP',
+    role: 'Speech-Language Pathologist · Community Outreach Director',
+    image: '/images/team-marci-silver.jpg',
+    pos: 'object-[center_35%]',
+    bio: 'Specializes in myofunctional therapy, feeding, speech, language, and cognitive therapy — with a deep focus on the connection between airway health and behavior. Advocate for family-centered, collaborative care and host of educational podcasts.',
+  },
+  {
+    name: 'Esther',
+    credentials: 'OT Professional · Sleep Expert',
+    role: 'Sleep Specialist',
+    image: '/images/team-esther.jpg',
+    pos: 'object-top',
+    bio: 'Blends neuroscience, sensory processing, and child development into personalized sleep solutions. Passionate about helping exhausted families find rest — no rigid one-size-fits-all programs.',
+  },
+  {
+    name: 'Jonathon Tenorio',
+    credentials: 'COTA',
+    role: 'Occupational Therapy Assistant',
+    image: '/images/team-jonathon-tenorio.png',
+    pos: 'object-[center_40%]',
+    bio: 'Kinesiology graduate (CSUN) and Stanbridge University OTA alum. Takes a sensory-motor approach centered on building each child\'s confidence and strength. Active in health and fitness — and proud parent of four dogs.',
+  },
+  {
+    name: 'Florencio "Flo" Lopez',
+    credentials: 'COTA',
+    role: 'Occupational Therapy Assistant',
+    image: '/images/team-flo-lopez.png',
+    pos: 'object-[center_45%]',
+    bio: 'LA native with degrees in Kinesiology and Occupational Therapy Assisting. Experienced supporting children with autism, neurological conditions, cerebral palsy, and complex needs. Dad of two daughters.',
+  },
+  {
+    name: 'Ana Lopez',
+    credentials: 'SLPA',
+    role: 'Speech-Language Pathology Assistant',
+    image: '/images/team-ana-lopez.jpg',
+    pos: 'object-top',
+    bio: 'Over a decade of experience supporting children with autism, Down syndrome, cerebral palsy, and speech-language disorders. Cum Laude graduate of Cal State LA. Happiest hiking, snowboarding, or traveling.',
+  },
+];
+---
+
+<BaseLayout title="Meet the Team" description="Meet the multidisciplinary pediatric therapy team at TheraPlay LA — occupational therapists, speech-language pathologists, and specialists led by Dr. Marielly Mitchell.">
+  <section class="relative overflow-hidden bg-dark hero-grain py-24 md:py-28">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-primary/25 blob-soft"></div>
+    <div class="absolute -bottom-32 -left-16 w-80 h-80 bg-brand-secondary/15 blob-soft"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="eyebrow-script mb-3 !text-3xl" style="color: #F5A878;">the people behind the progress</p>
+      <h1 class="text-4xl md:text-5xl font-heading" style="color: #fff;">Meet Our Team</h1>
+      <p class="text-white/80 mt-5 text-lg leading-relaxed">
+        Therapists who collaborate across disciplines, coach parents as partners, and genuinely love what they do.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {team.map(member => (
+          <div class="card-accent bg-white rounded-3xl border border-sky-tint overflow-hidden group hover:shadow-xl transition-all duration-300 fade-in-up">
+            <div class="h-80 overflow-hidden bg-sky-tint">
+              <img src={member.image} alt={`${member.name} — ${member.role} at TheraPlay LA`} class:list={["w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500", member.pos]} loading="lazy" />
+            </div>
+            <div class="p-7">
+              <h3 class="font-heading text-xl text-dark">{member.name}</h3>
+              <p class="text-brand-primary text-xs font-bold uppercase tracking-wider mt-1">{member.credentials}</p>
+              <p class="text-brand-secondary-dark text-sm font-semibold mt-1">{member.role}</p>
+              <p class="text-sm text-dark-light/80 leading-relaxed mt-4">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Come meet us in person"
+    subtitle="The best introduction is watching your child light up in our space. Book a free discovery call and let's find a time."
+  />
+</BaseLayout>

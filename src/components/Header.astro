@@ -1,0 +1,124 @@
+---
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+
+const serviceLinks = [
+  { href: '/services/occupational-therapy', label: 'Occupational Therapy' },
+  { href: '/services/speech-therapy', label: 'Speech Therapy' },
+  { href: '/services/feeding-therapy', label: 'Feeding Therapy' },
+  { href: '/services/myofunctional-therapy', label: 'Myofunctional Therapy' },
+  { href: '/services/intensives', label: 'Therapy Intensives' },
+];
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services', dropdown: true },
+  { href: '/about', label: 'About' },
+  { href: '/team', label: 'Our Team' },
+  { href: '/our-space', label: 'Our Space' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-[0_1px_0_rgba(42,42,92,0.08)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="/" class="flex-shrink-0">
+        <img src="/images/logo-theraplay.png" alt="TheraPlay LA — Pediatric Therapy" class="h-14 w-auto" />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6">
+        {navLinks.map(link => (
+          link.dropdown ? (
+            <div class="relative group">
+              <a
+                href={link.href}
+                class:list={[
+                  "relative inline-flex items-center gap-1 text-[13px] font-bold uppercase tracking-wider transition-colors duration-200 py-6",
+                  isActive(link.href) ? "text-brand-primary" : "text-dark hover:text-brand-primary"
+                ]}
+              >
+                {link.label}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                {isActive(link.href) && (
+                  <span class="absolute bottom-4 left-0 right-0 h-0.5 bg-brand-secondary rounded-full"></span>
+                )}
+              </a>
+              <div class="absolute left-1/2 -translate-x-1/2 top-full pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-y-1 group-hover:translate-y-0">
+                <div class="bg-white rounded-2xl shadow-xl border border-sky-tint p-2 w-64">
+                  <a href="/services" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-dark hover:bg-sky-tint hover:text-brand-primary transition-colors">All Services</a>
+                  <div class="h-px bg-sky-tint my-1"></div>
+                  {serviceLinks.map(s => (
+                    <a href={s.href} class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-dark-light hover:bg-sky-tint hover:text-brand-primary transition-colors">{s.label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class:list={[
+                "relative text-[13px] font-bold uppercase tracking-wider transition-colors duration-200 py-1",
+                isActive(link.href) ? "text-brand-primary" : "text-dark hover:text-brand-primary"
+              ]}
+            >
+              {link.label}
+              {isActive(link.href) && (
+                <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-secondary rounded-full"></span>
+              )}
+            </a>
+          )
+        ))}
+        <a href="/contact" class="btn-lift ml-2 inline-flex items-center px-6 py-3 bg-brand-primary hover:bg-brand-primary-dark text-white text-xs font-bold uppercase tracking-widest rounded-full">
+          Book a Discovery Call
+        </a>
+      </nav>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-dark p-2 relative z-50" aria-label="Toggle navigation menu">
+        <svg id="hamburger-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-sky-tint max-h-[calc(100vh-5rem)] overflow-y-auto">
+    <div class="px-6 py-6 space-y-1">
+      {navLinks.filter(l => !l.dropdown).slice(0, 1).map(link => (
+        <a href={link.href} class:list={["block text-base font-bold uppercase tracking-wider py-3 border-b border-sky-tint", isActive(link.href) ? "text-brand-primary" : "text-dark"]}>{link.label}</a>
+      ))}
+      <a href="/services" class:list={["block text-base font-bold uppercase tracking-wider py-3", isActive('/services') ? "text-brand-primary" : "text-dark"]}>Services</a>
+      {serviceLinks.map(s => (
+        <a href={s.href} class="block text-sm font-semibold py-2.5 pl-4 text-dark-light border-b border-sky-tint/60">{s.label}</a>
+      ))}
+      {navLinks.filter(l => !l.dropdown).slice(1).map(link => (
+        <a href={link.href} class:list={["block text-base font-bold uppercase tracking-wider py-3 border-b border-sky-tint", isActive(link.href) ? "text-brand-primary" : "text-dark"]}>{link.label}</a>
+      ))}
+      <a href="/contact" class="btn-lift block text-center mt-6 px-5 py-3.5 bg-brand-primary hover:bg-brand-primary-dark text-white font-bold uppercase tracking-wider rounded-full">
+        Book a Discovery Call
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="h-20"></div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    hamburger?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+</script>

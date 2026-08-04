@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* TheraPlay LA brand palette — derived from logo (periwinkle cloud, coral ladder, indigo letters) */
+@theme {
+  --color-brand-primary: #4368BD;
+  --color-brand-primary-dark: #3D5EB0;
+  --color-brand-primary-light: #6C91E2;
+  --color-brand-secondary: #E8834A;
+  --color-brand-secondary-dark: #C05F1E;
+  --color-dark: #2A2A5C;
+  --color-dark-light: #3A3A5E;
+  --color-indigo-logo: #343293;
+  --color-light-bg: #FDF8F3;
+  --color-sky-tint: #EDF2FC;
+  --color-highlight-bg: #FBEEE4;
+  --color-alert: #E8834A;
+  --color-muted: #64748B;
+
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Nunito Sans', system-ui, sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:where(h1, h2, h3, h4) {
+  font-family: var(--font-heading);
+  color: var(--color-dark);
+}
+
+/* Scroll-triggered fade-in */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-up:nth-child(2) { transition-delay: 0.08s; }
+.fade-in-up:nth-child(3) { transition-delay: 0.16s; }
+.fade-in-up:nth-child(4) { transition-delay: 0.24s; }
+.fade-in-up:nth-child(5) { transition-delay: 0.32s; }
+.fade-in-up:nth-child(6) { transition-delay: 0.40s; }
+
+/* Hero grain texture */
+.hero-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Button hover lift */
+.btn-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.btn-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(42, 42, 92, 0.3);
+}
+
+/* Gradient accent top border (footer) */
+.gold-accent-top {
+  position: relative;
+}
+.gold-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-brand-primary-light), var(--color-brand-secondary), var(--color-brand-primary-light));
+}
+
+/* Card hover accent border */
+.card-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-brand-primary-light), var(--color-brand-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.card-accent:hover::before {
+  transform: scaleX(1);
+}
+
+/* Script eyebrow label — echoes the logo's handwritten "play" */
+.eyebrow-script {
+  font-family: var(--font-script);
+  font-size: 1.625rem;
+  line-height: 1;
+  color: var(--color-brand-secondary);
+}
+
+/* Soft cloud blob for image masks */
+.blob-soft {
+  border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+}

@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Faq from '../../components/Faq.astro';
+
+const skills = [
+  'Fine & gross motor development',
+  'Handwriting & scissor skills',
+  'Sensory integration & regulation',
+  'Feeding challenges',
+  'Primitive reflex integration',
+  'Core strength & postural control',
+  'Motor planning & organization',
+  'School-readiness skills',
+];
+
+const candidates = [
+  { title: 'Falling behind at school', text: 'Children whose motor or sensory skill gaps are starting to affect academics and confidence.' },
+  { title: 'Neurological conditions', text: 'Kids with cerebral palsy, TBI, or other neurological differences who benefit from concentrated repetition.' },
+  { title: 'Big transitions ahead', text: 'Preparing for pre-K, kindergarten, or junior high — building skills before the demands arrive.' },
+  { title: 'Momentum-minded families', text: 'Families who want to consolidate months of weekly therapy into weeks of focused, immersive progress.' },
+];
+
+const faq = [
+  { q: 'How is an intensive different from weekly therapy?', a: 'Instead of one hour per week, your child attends 4-5 sessions per week (1-3 hours each) for about 4 weeks, targeting 3-4 high-impact goals. The brain learns through repetition — daily practice means skills consolidate from session to session instead of resetting between weekly visits.' },
+  { q: 'Is "6-9 months of progress in 3 weeks" real?', a: 'It reflects what we consistently see when goals are focused and practice is daily. Concentrated therapy lets each session build directly on the last, and parents receive daily carryover strategies that multiply the effect.' },
+  { q: 'Will my child burn out?', a: 'Sessions are play-based and varied — from the outside they look like an amazing day at a play gym. Therapists pace intensity carefully and build in regulation breaks.' },
+  { q: 'Can families from outside LA do an intensive?', a: 'Yes — intensives are a popular option for traveling families precisely because they compress months of therapy into a few weeks. We\'ll help you plan the logistics on your discovery call.' },
+];
+---
+
+<BaseLayout title="Pediatric Therapy Intensives in Los Angeles" description="TheraPlay LA therapy intensives: 4-5 sessions per week for about 4 weeks, targeting 3-4 high-impact goals. Months of progress in weeks.">
+  <Hero
+    compact
+    eyebrow="therapy intensives"
+    title="Months of progress. Weeks of therapy."
+    subtitle="A concentrated 4-week program — 4-5 play-packed sessions per week aimed at 3-4 high-impact goals — for children who need momentum, not maintenance."
+    image="/images/space-gym-2.jpg"
+    badges={['4-5 sessions / week', '1-3 hours per session', '~4 week program']}
+    primaryCta={{ label: 'Book a Free Discovery Call', href: '/contact' }}
+  />
+
+  <!-- Why intensives work -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <p class="eyebrow-script mb-2">why it works</p>
+          <h2 class="text-3xl md:text-4xl font-heading mb-6">The brain rewires through repetition</h2>
+          <p class="text-dark-light/85 leading-relaxed mb-4">
+            Traditional once-a-week therapy asks a child's brain to remember, rebuild, and then advance — all in a single
+            hour, seven days apart. Intensives flip that math. With sessions almost every day, each one starts where the
+            last one ended. Skills stick, confidence snowballs, and goals that would take months fall in weeks.
+          </p>
+          <p class="text-dark-light/85 leading-relaxed mb-8">
+            We keep the target list short on purpose: 3-4 high-impact goals chosen with you during the evaluation.
+            Focus is what turns intensity into results — families consistently report the equivalent of
+            <strong>6 to 9 months of progress in as little as 3 weeks</strong>.
+          </p>
+          <div class="grid grid-cols-3 gap-4">
+            {[
+              { v: '4-5×', l: 'sessions per week' },
+              { v: '1-3h', l: 'per session' },
+              { v: '3-4', l: 'focused goals' },
+            ].map(s => (
+              <div class="bg-sky-tint rounded-2xl px-4 py-5 text-center">
+                <div class="font-heading text-2xl text-brand-primary">{s.v}</div>
+                <div class="text-[11px] uppercase tracking-widest font-bold text-dark-light/60 mt-1">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="relative fade-in-up">
+          <div class="absolute -top-6 -right-6 w-40 h-40 bg-brand-secondary/20 blob-soft"></div>
+          <img src="/images/clinic-therapy-1.jpg" alt="Focused one-on-one intensive therapy session at TheraPlay LA" class="relative rounded-3xl shadow-xl w-full max-h-[560px] object-cover object-top" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-20 bg-light-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">who thrives in an intensive</p>
+        <h2 class="text-3xl md:text-4xl font-heading">Built for kids who need a breakthrough</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {candidates.map(c => (
+          <div class="card-accent bg-white rounded-2xl p-7 border border-sky-tint fade-in-up">
+            <h3 class="font-heading text-lg text-dark mb-2">{c.title}</h3>
+            <p class="text-sm text-dark-light/80 leading-relaxed">{c.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-14 bg-white rounded-3xl border border-sky-tint p-8 md:p-10">
+        <div class="text-center mb-8">
+          <h3 class="font-heading text-2xl text-dark">Skills we target</h3>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {skills.map(skill => (
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-brand-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm font-semibold text-dark-light">{skill}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faq} title="Intensives FAQ" />
+  <CtaBand
+    title="Is an intensive right for your child?"
+    subtitle="Tell us your goals on a free discovery call and we'll map out whether an intensive — or weekly therapy — is the smartest path."
+  />
+</BaseLayout>

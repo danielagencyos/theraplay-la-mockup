@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from './Hero.astro';
+import CtaBand from './CtaBand.astro';
+import Faq from './Faq.astro';
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  heroImage: string;
+  introHeading: string;
+  introBody: string[];
+  sideImage: string;
+  sideImageAlt: string;
+  signsHeading: string;
+  signs: string[];
+  approachHeading: string;
+  approach: { title: string; text: string }[];
+  faq: { q: string; a: string }[];
+}
+
+const p = Astro.props;
+---
+
+<BaseLayout title={p.metaTitle} description={p.metaDescription}>
+  <Hero
+    compact
+    eyebrow={p.eyebrow}
+    title={p.title}
+    subtitle={p.subtitle}
+    image={p.heroImage}
+    primaryCta={{ label: 'Book a Free Discovery Call', href: '/contact' }}
+  />
+
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-heading mb-6">{p.introHeading}</h2>
+          {p.introBody.map(par => (
+            <p class="text-dark-light/85 leading-relaxed mb-4">{par}</p>
+          ))}
+        </div>
+        <div class="relative fade-in-up">
+          <div class="absolute -top-6 -right-6 w-40 h-40 bg-brand-primary-light/20 blob-soft"></div>
+          <img src={p.sideImage} alt={p.sideImageAlt} class="relative rounded-3xl shadow-xl w-full max-h-[520px] object-cover" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-sky-tint">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">is this your child?</p>
+        <h2 class="text-3xl md:text-4xl font-heading">{p.signsHeading}</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        {p.signs.map(sign => (
+          <div class="flex items-start gap-3 bg-white rounded-xl px-5 py-4 border border-white shadow-sm fade-in-up">
+            <svg class="w-5 h-5 mt-0.5 text-brand-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm text-dark-light/90 leading-relaxed">{sign}</span>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-sm text-dark-light/70 mt-8 max-w-xl mx-auto">
+        Recognize a few of these? A free discovery call is the easiest way to find out whether an evaluation makes sense.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">our approach</p>
+        <h2 class="text-3xl md:text-4xl font-heading">{p.approachHeading}</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {p.approach.map((item, i) => (
+          <div class="card-accent bg-light-bg rounded-2xl p-7 fade-in-up">
+            <div class="w-10 h-10 rounded-full bg-brand-primary text-white font-heading flex items-center justify-center mb-4">{i + 1}</div>
+            <h3 class="font-heading text-lg text-dark mb-2">{item.title}</h3>
+            <p class="text-sm text-dark-light/80 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Faq items={p.faq} />
+  <CtaBand />
+</BaseLayout>

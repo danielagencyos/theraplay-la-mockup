@@ -1,0 +1,29 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const {
+  title = "Ready to see what's possible for your child?",
+  subtitle = "Start with a free 15-minute discovery call. We'll listen, answer your questions, and map out the right next step — no pressure, no obligation.",
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-dark hero-grain">
+  <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-primary/20 blob-soft"></div>
+  <div class="absolute -bottom-32 -left-16 w-80 h-80 bg-brand-secondary/15 blob-soft"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <p class="eyebrow-script mb-3" style="color: #F5A878;">let's take the first step together</p>
+    <h2 class="text-3xl md:text-4xl font-heading" style="color: #fff;">{title}</h2>
+    <p class="text-white/75 mt-4 text-lg leading-relaxed max-w-2xl mx-auto">{subtitle}</p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/contact" class="btn-lift inline-flex items-center justify-center px-8 py-4 bg-brand-secondary hover:bg-brand-secondary-dark text-dark hover:text-white text-sm font-bold uppercase tracking-wider rounded-full">
+        Book a Free Discovery Call
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="tel:+14243924568" class="btn-lift inline-flex items-center justify-center px-8 py-4 border-2 border-white/40 hover:border-white hover:bg-white/10 text-white text-sm font-bold uppercase tracking-wider rounded-full">
+        Call (424) 392-4568
+      </a>
+    </div>
+  </div>
+</section>

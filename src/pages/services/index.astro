@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const coreServices = [
+  {
+    title: 'Occupational Therapy',
+    description: 'Play-based support for sensory processing, fine and gross motor skills, primitive reflex integration, handwriting, and self-regulation — in our sensory gym or via teletherapy.',
+    href: '/services/occupational-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>',
+  },
+  {
+    title: 'Speech Therapy',
+    description: 'Licensed speech-language pathologists supporting articulation, language development, and cognitive communication — with direct therapy and parent coaching.',
+    href: '/services/speech-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>',
+  },
+  {
+    title: 'Feeding & Swallowing Therapy',
+    description: 'For picky eaters, problem feeders, and children with swallowing challenges. We find the root cause — sensory, motor, or airway — and rebuild a positive relationship with food.',
+    href: '/services/feeding-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  },
+  {
+    title: 'Orofacial Myofunctional Therapy',
+    description: 'Airway-focused therapy for mouth breathing, tongue thrust, oral habits, and low oral tone — factors that quietly affect sleep, feeding, speech, and attention.',
+    href: '/services/myofunctional-therapy',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  },
+  {
+    title: 'Therapy Intensives',
+    description: 'A concentrated 4-week program with 4-5 sessions per week targeting 3-4 high-impact goals. Families report months of progress in weeks.',
+    href: '/services/intensives',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+  },
+];
+
+const supportServices = [
+  {
+    title: 'Sleep Coaching',
+    description: 'Neuroscience-informed sleep support from our in-house sleep specialist — personalized solutions, not one-size-fits-all sleep training.',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>',
+  },
+  {
+    title: 'Nutrition Consulting',
+    description: 'Practical nutrition guidance that works alongside feeding therapy to nourish growing bodies and brains.',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>',
+  },
+  {
+    title: 'Teletherapy',
+    description: 'Virtual OT, speech, and feeding sessions plus parent coaching — wherever you are. In-home strategies using the toys and spaces you already have.',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>',
+  },
+  {
+    title: 'Caregiver Training',
+    description: 'Sessions for nannies and caregivers so your child\'s support system carries therapy strategies into everyday routines.',
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+  },
+];
+---
+
+<BaseLayout title="Pediatric Therapy Services in Los Angeles" description="Occupational, speech, feeding, and myofunctional therapy plus intensives, sleep coaching, and nutrition consulting at TheraPlay LA.">
+  <Hero
+    compact
+    eyebrow="what we do"
+    title="Every therapy your child needs, under one roof"
+    subtitle="Core therapies, focused intensives, and whole-family support — coordinated by one team that sees the full picture of your child."
+    image="/images/clinic-eval.jpg"
+    primaryCta={{ label: 'Book a Free Discovery Call', href: '/contact' }}
+  />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">core therapies</p>
+        <h2 class="text-3xl md:text-4xl font-heading">Specialized care, root-cause focused</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {coreServices.map(s => (
+          <div class="fade-in-up">
+            <ServiceCard title={s.title} description={s.description} icon={s.icon} href={s.href} large />
+          </div>
+        ))}
+        <div class="fade-in-up card-accent bg-dark rounded-2xl p-8 flex flex-col justify-center">
+          <p class="eyebrow-script mb-2" style="color: #F5A878;">not sure where to start?</p>
+          <h3 class="font-heading text-xl mb-3" style="color: #fff;">Let's figure it out together</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-5">A free 15-minute discovery call helps us point you to the right evaluation — even if that means referring you elsewhere.</p>
+          <a href="/contact" class="btn-lift inline-flex items-center self-start px-6 py-3 bg-brand-secondary hover:bg-brand-secondary-dark text-dark hover:text-white text-xs font-bold uppercase tracking-widest rounded-full">Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-light-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow-script mb-2">whole-family support</p>
+        <h2 class="text-3xl md:text-4xl font-heading">Beyond the therapy session</h2>
+        <p class="mt-4 text-dark-light/80 leading-relaxed">Progress sticks when the whole ecosystem around a child is supported — sleep, nutrition, caregivers, and home routines included.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {supportServices.map(s => (
+          <div class="fade-in-up">
+            <ServiceCard title={s.title} description={s.description} icon={s.icon} />
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-xs text-muted mt-10 max-w-2xl mx-auto">
+        Teletherapy note: due to licensing restrictions, telehealth sessions with participants outside California are
+        offered as parent coaching and are not eligible for insurance reimbursement.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
