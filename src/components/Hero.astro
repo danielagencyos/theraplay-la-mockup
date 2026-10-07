@@ -8,23 +8,24 @@ interface Props {
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   badges?: string[];
+  imagePosition?: string;
 }
 
-const { title, subtitle, image, eyebrow, compact = false, primaryCta, secondaryCta, badges } = Astro.props;
+const { title, subtitle, image, eyebrow, compact = false, primaryCta, secondaryCta, badges, imagePosition = 'center' } = Astro.props;
 ---
 
 <section class:list={["relative overflow-hidden hero-grain", compact ? "py-24 md:py-32" : "py-28 md:py-40 lg:py-44"]}>
   <div class="absolute inset-0">
-    <img src={image} alt="" class="w-full h-full object-cover" loading="eager" />
+    <img src={image} alt="" class="w-full h-full object-cover" style={`object-position: ${imagePosition};`} loading="eager" />
     <div class="absolute inset-0 bg-gradient-to-br from-dark/90 via-dark/70 to-indigo-logo/40"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class:list={[compact ? "max-w-3xl mx-auto text-center" : "max-w-3xl"]}>
       {eyebrow && (
-        <p class="eyebrow-script mb-3 !text-3xl" style="color: #F5A878;">{eyebrow}</p>
+        <p class="eyebrow-script mb-3 !text-2xl" style="color: #F5A878;">{eyebrow}</p>
       )}
-      <h1 class:list={["font-heading leading-tight", compact ? "text-3xl md:text-5xl" : "text-4xl md:text-5xl lg:text-6xl"]} style="color: #fff;">
+      <h1 class:list={["font-heading leading-tight", compact ? "text-4xl md:text-6xl font-semibold" : "text-4xl md:text-5xl lg:text-6xl"]} style="color: #fff;">
         {title}
       </h1>
       <p class:list={["text-white/85 mt-5 leading-relaxed", compact ? "text-base md:text-lg" : "text-lg md:text-xl max-w-2xl"]}>

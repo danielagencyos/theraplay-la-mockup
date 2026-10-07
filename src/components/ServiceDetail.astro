@@ -11,6 +11,7 @@ interface Props {
   title: string;
   subtitle: string;
   heroImage: string;
+  heroImagePosition?: string;
   introHeading: string;
   introBody: string[];
   sideImage: string;
@@ -32,6 +33,7 @@ const p = Astro.props;
     title={p.title}
     subtitle={p.subtitle}
     image={p.heroImage}
+    imagePosition={p.heroImagePosition}
     primaryCta={{ label: 'Book a Free Discovery Call', href: '/contact' }}
   />
 
