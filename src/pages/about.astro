@@ -6,15 +6,15 @@ import CtaBand from '../components/CtaBand.astro';
 const pillars = [
   {
     title: 'Occupational Therapy',
-    text: 'Sensory processing, motor foundations, and primitive reflex integration: the base layer of the stack.',
+    text: 'Regulation, attention, fine and gross motor skills, sensory processing, and primitive reflex integration, built through purposeful play.',
+  },
+  {
+    title: 'Speech Therapy',
+    text: 'Speech, language, cognitive-communication, feeding and swallowing support from licensed SLPs.',
   },
   {
     title: 'Airway-Focused Care',
     text: 'Breathing quality shapes sleep, appetite, attention, and regulation. We screen for it in every child.',
-  },
-  {
-    title: 'Myofunctional Therapy',
-    text: 'Retraining tongue posture, chewing, and swallowing patterns so gains in every other area actually hold.',
   },
 ];
 
@@ -28,12 +28,12 @@ const press = [
 ];
 ---
 
-<BaseLayout title="About Us" description="The story behind TheraPlay LA, a doctor-led pediatric therapy clinic in Los Angeles built on the Therastacking whole-child approach.">
+<BaseLayout title="About Us" description="The story behind TheraPlay LA, a pediatric therapy clinic in Los Angeles built on the Therastacking whole-child approach.">
   <Hero
     compact
     eyebrow="our story"
     title="Care that's intentional, precise & joyful"
-    subtitle="TheraPlay LA began as one occupational therapist's conviction that children deserve better than symptom-chasing, and grew into a multidisciplinary clinic families trust across Los Angeles."
+    subtitle="TheraPlay LA began as one occupational therapist's conviction that children deserve better than symptom-chasing, and grew into a multidisciplinary clinic families trust across Los Angeles and beyond."
     image="/images/space-gym-2.jpg"
   />
 
@@ -48,9 +48,9 @@ const press = [
         <div class="lg:col-span-3">
           <p class="eyebrow-script mb-2">meet the founder</p>
           <h2 class="text-3xl md:text-4xl font-heading mb-2">Dr. Marielly Mitchell</h2>
-          <p class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-6">OTD, OTR/L, SIPT, SWC · Pediatric OT & Orofacial Myofunctional Therapist</p>
+          <p class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-6">OTD, OTR/L, SIPT, SWC, PAMS · Pediatric OT & Orofacial Myofunctional Therapist</p>
           <p class="text-dark-light/85 leading-relaxed mb-4">
-            After nearly 13 years working hands-on with children, Dr. Marielly kept seeing the same pattern: kids
+            After 15+ years working hands-on with children, Dr. Marielly kept seeing the same pattern: kids
             bounced between disconnected specialists (one for speech, one for feeding, one for behavior) while the
             underlying thread connecting their challenges went unnoticed. The picky eater who mouth-breathes. The
             "inattentive" student who never sleeps deeply. The speech delay rooted in oral muscle patterns.
@@ -103,7 +103,7 @@ const press = [
             {[
               { title: 'Root causes over symptoms', text: 'We ask "why" until the answer explains everything, then treat that.' },
               { title: 'Play is the work', text: 'Children learn fastest when they\'re joyful, safe, and moving. Our clinic is built to make hard work feel like the best hour of their week.' },
-              { title: 'Parents are partners', text: 'No black-box therapy. You\'ll always know what we\'re working on, why, and how to carry it home.' },
+              { title: 'Parents are partners', text: 'You\'ll always know what we\'re working on, why, and how to carry it home.' },
               { title: 'Collaboration by default', text: 'Dentists, ENTs, pediatricians, teachers: we work with your child\'s whole village.' },
             ].map(v => (
               <div class="flex gap-4 fade-in-up">
