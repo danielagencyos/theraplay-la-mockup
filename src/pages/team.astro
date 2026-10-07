@@ -5,11 +5,11 @@ import CtaBand from '../components/CtaBand.astro';
 const team = [
   {
     name: 'Dr. Marielly Mitchell',
-    credentials: 'OTD, OTR/L, SIPT, SWC',
+    credentials: 'OTD, OTR/L, SIPT, SWC, PAMS',
     role: 'Founder · Pediatric OT & Orofacial Myofunctional Therapist',
     image: '/images/team-dr-marielly.jpg',
     pos: 'object-top',
-    bio: 'Doctor of Occupational Therapy with nearly 13 years of hands-on experience. Creator of the Therastacking approach combining OT, airway-focused care, and myofunctional therapy. Featured on CBS News LA, Voyage LA, and podcasts nationwide.',
+    bio: 'Doctor of Occupational Therapy with 15+ years of hands-on experience. Creator of the Therastacking approach combining OT, airway-focused care, and myofunctional therapy. Featured on CBS News LA, Voyage LA, and podcasts nationwide.',
   },
   {
     name: 'Marci Silver',
@@ -17,7 +17,7 @@ const team = [
     role: 'Speech-Language Pathologist · Community Outreach Director',
     image: '/images/team-marci-silver.jpg',
     pos: 'object-[center_35%]',
-    bio: 'Specializes in myofunctional therapy, feeding, speech, language, and cognitive therapy — with a deep focus on the connection between airway health and behavior. Advocate for family-centered, collaborative care and host of educational podcasts.',
+    bio: 'Specializes in myofunctional therapy, feeding, speech, language, and cognitive therapy, with a deep focus on the connection between airway health and behavior. Advocate for family-centered, collaborative care and host of educational podcasts.',
   },
   {
     name: 'Esther',
@@ -25,7 +25,7 @@ const team = [
     role: 'Sleep Specialist',
     image: '/images/team-esther.jpg',
     pos: 'object-top',
-    bio: 'Blends neuroscience, sensory processing, and child development into personalized sleep solutions. Passionate about helping exhausted families find rest — no rigid one-size-fits-all programs.',
+    bio: 'Blends neuroscience, sensory processing, and child development into personalized sleep solutions. Passionate about helping exhausted families find rest, with no rigid one-size-fits-all programs.',
   },
   {
     name: 'Jonathon Tenorio',
@@ -33,7 +33,7 @@ const team = [
     role: 'Occupational Therapy Assistant',
     image: '/images/team-jonathon-tenorio.png',
     pos: 'object-[center_40%]',
-    bio: 'Kinesiology graduate (CSUN) and Stanbridge University OTA alum. Takes a sensory-motor approach centered on building each child\'s confidence and strength. Active in health and fitness — and proud parent of four dogs.',
+    bio: 'Kinesiology graduate (CSUN) and Stanbridge University OTA alum. Takes a sensory-motor approach centered on building each child\'s confidence and strength. Active in health and fitness, and proud parent of four dogs.',
   },
   {
     name: 'Florencio "Flo" Lopez',
@@ -54,7 +54,7 @@ const team = [
 ];
 ---
 
-<BaseLayout title="Meet the Team" description="Meet the multidisciplinary pediatric therapy team at TheraPlay LA — occupational therapists, speech-language pathologists, and specialists led by Dr. Marielly Mitchell.">
+<BaseLayout title="Meet the Team" description="Meet the multidisciplinary pediatric therapy team at TheraPlay LA: occupational therapists, speech-language pathologists, and specialists led by Dr. Marielly Mitchell.">
   <section class="relative overflow-hidden bg-dark hero-grain py-24 md:py-28">
     <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-primary/25 blob-soft"></div>
     <div class="absolute -bottom-32 -left-16 w-80 h-80 bg-brand-secondary/15 blob-soft"></div>
@@ -73,7 +73,7 @@ const team = [
         {team.map(member => (
           <div class="card-accent bg-white rounded-3xl border border-sky-tint overflow-hidden group hover:shadow-xl transition-all duration-300 fade-in-up">
             <div class="h-80 overflow-hidden bg-sky-tint">
-              <img src={member.image} alt={`${member.name} — ${member.role} at TheraPlay LA`} class:list={["w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500", member.pos]} loading="lazy" />
+              <img src={member.image} alt={`${member.name}, ${member.role} at TheraPlay LA`} class:list={["w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500", member.pos]} loading="lazy" />
             </div>
             <div class="p-7">
               <h3 class="font-heading text-xl text-dark">{member.name}</h3>

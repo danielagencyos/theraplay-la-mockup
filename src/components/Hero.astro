@@ -3,6 +3,7 @@ interface Props {
   title: string;
   subtitle: string;
   image: string;
+  imagePosition?: string;
   eyebrow?: string;
   compact?: boolean;
   primaryCta?: { label: string; href: string };
@@ -10,12 +11,12 @@ interface Props {
   badges?: string[];
 }
 
-const { title, subtitle, image, eyebrow, compact = false, primaryCta, secondaryCta, badges } = Astro.props;
+const { title, subtitle, image, imagePosition = 'center', eyebrow, compact = false, primaryCta, secondaryCta, badges } = Astro.props;
 ---
 
 <section class:list={["relative overflow-hidden hero-grain", compact ? "py-24 md:py-32" : "py-28 md:py-40 lg:py-44"]}>
   <div class="absolute inset-0">
-    <img src={image} alt="" class="w-full h-full object-cover" loading="eager" />
+    <img src={image} alt="" class="w-full h-full object-cover" style={`object-position: ${imagePosition}`} loading="eager" />
     <div class="absolute inset-0 bg-gradient-to-br from-dark/90 via-dark/70 to-indigo-logo/40"></div>
   </div>
 
